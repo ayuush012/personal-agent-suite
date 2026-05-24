@@ -13,9 +13,15 @@ BLOCKED_TERMS = [
     "sk" + "-ant-",
 ]
 SECRET_PATTERNS = [
-    re.compile(r"(?i)(api[_-]?key|token|secret|password)[ \t]*=[ \t]*['\"]?[A-Za-z0-9_\-]{12,}"),
+    re.compile(r"(?i)(api[_-]?key|token|secret|password)[ \t]*=[ \t]*['\"]?([A-Za-z0-9_\-]{12,})"),
 ]
-SKIP_DIRS = {".git", ".venv", "__pycache__", "outputs"}
+SKIP_DIRS = {".git", ".venv", "__pycache__", "outputs", "node_modules", "dist"}
+PLACEHOLDER_VALUES = {
+    "your_groq_key",
+    "your_token",
+    "replace_me",
+    "your-domain",
+}
 
 
 def iter_files():
@@ -38,7 +44,10 @@ def main() -> int:
             if term in lower:
                 findings.append(f"{path.relative_to(ROOT)} contains blocked term: {term}")
         for pattern in SECRET_PATTERNS:
-            if pattern.search(text):
+            for match in pattern.finditer(text):
+                value = match.group(2).strip().strip("'\"")
+                if value.lower() in PLACEHOLDER_VALUES or value.lower().startswith("your_"):
+                    continue
                 findings.append(f"{path.relative_to(ROOT)} may contain a secret-like assignment")
 
     if findings:

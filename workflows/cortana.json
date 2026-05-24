@@ -1,0 +1,8 @@
+{
+  "id": "cortana",
+  "name": "Knowledge Retrieval Agent",
+  "persona_name": "Cortana",
+  "description": "Answers questions from sanitized local documents.",
+  "execution_pattern": "conversational",
+  "integration_deps": ["qdrant", "drive", "confluence"]
+}

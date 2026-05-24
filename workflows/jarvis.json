@@ -1,0 +1,8 @@
+{
+  "id": "jarvis",
+  "name": "PM Ticket Agent",
+  "persona_name": "Jarvis",
+  "description": "Turns requirements into Jira-ready tickets and export files.",
+  "execution_pattern": "conversational",
+  "integration_deps": ["jira", "atlassian", "figma"]
+}

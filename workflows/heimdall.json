@@ -1,0 +1,8 @@
+{
+  "id": "heimdall",
+  "name": "Router Agent",
+  "persona_name": "Heimdall",
+  "description": "Routes PM requests to the best specialist agent.",
+  "execution_pattern": "conversational",
+  "integration_deps": []
+}
