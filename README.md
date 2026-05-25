@@ -55,6 +55,16 @@ npm install
 npm run dev
 ```
 
+## Deploy Backend (Render)
+
+Use the included blueprint:
+
+1. Create a Render Blueprint from this repo.
+2. Render reads [render.yaml](/Users/ayushagarwal/Documents/Personal%20Projects/PM%20Agents/personal-agent-suite/render.yaml).
+3. Set `GROQ_API_KEY` in Render service environment.
+
+Full steps: [docs/DEPLOY_RENDER.md](/Users/ayushagarwal/Documents/Personal%20Projects/PM%20Agents/personal-agent-suite/docs/DEPLOY_RENDER.md)
+
 ## Repository Shape
 
 ```text
